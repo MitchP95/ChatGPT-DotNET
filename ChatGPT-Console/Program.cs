@@ -20,17 +20,37 @@ namespace ChatGPT_API_Example
             Configuration = builder.Build();
 
             var openAISecrets = Configuration.GetSection("OPEN_AI");
-            string openApiOrganization = openAISecrets["ORGANIZATION"];
-            string openApiSecretApiKey = openAISecrets["SECRET_API_KEY"];
+            string openAiOrganization = openAISecrets["ORGANIZATION"];
+            string openAiSecretApiKey = openAISecrets["SECRET_API_KEY"];
+
+            if (string.IsNullOrEmpty(openAiOrganization) || string.IsNullOrEmpty(openAiSecretApiKey))
+            {
+                Console.WriteLine("The OpenAI Organization / Secret API Key are not set - Follow the README for setup instructions.");
+                Environment.Exit(1);
+            }
 
             // Your code goes here
 
-            var chatGPTClient = new ChatGPTClient(openApiOrganization, openApiSecretApiKey);
+            var chatGPTClient = new ChatGPTClient(openAiOrganization, openAiSecretApiKey);
 
-            string prompt = "What is the capital of France?";
+            string prompt = "Write software requirements at the highest level for Facebook.";
             string queryResponse = await chatGPTClient.Query(prompt);
 
             Console.WriteLine("Response: " + queryResponse);
+
+            Console.WriteLine(Environment.NewLine);
+
+            var chatGPTConversationClient = new ChatGPTConversationClient(chatGPTClient);
+            Console.WriteLine("Now chatting...");
+
+            while (true)
+            {
+                Console.WriteLine("Enter Prompt: ");
+                prompt = Console.ReadLine();
+
+                queryResponse = await chatGPTConversationClient.Chat(prompt);
+                Console.WriteLine(queryResponse);
+            }
         }
     }
 }
