@@ -35,4 +35,6 @@ These commands use the colon : as a separator to define the nested structure. Th
 
 This example demonstrates how to use the ChatGPTClient to make stateless queries. It sends a single prompt to ChatGPT and prints the response.
 
-Conversation Client Example: This example showcases how to use the ChatGPTConversationClient for stateful queries and conversations. It utilizes the ChatGPTClient for querying and enables the user to continuously interact with the model. The user types in prompts, and the program returns the corresponding responses from ChatGPT.
+### Conversation Client Example: 
+
+This example showcases how to use the ChatGPTConversationClient for stateful queries and conversations. It utilizes the ChatGPTClient for querying and enables the user to continuously interact with the model. The user types in prompts, and the program returns the corresponding responses from ChatGPT.
