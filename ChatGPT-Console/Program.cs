@@ -29,7 +29,7 @@ namespace ChatGPT_API_Example
                 Environment.Exit(1);
             }
 
-            // Your code goes here
+            // Using the simple client for stateless queries
 
             var chatGPTClient = new ChatGPTClient(openAiOrganization, openAiSecretApiKey);
 
@@ -39,6 +39,8 @@ namespace ChatGPT_API_Example
             Console.WriteLine("Response: " + queryResponse);
 
             Console.WriteLine(Environment.NewLine);
+
+            // Using the Conversation Client for stateful queries and conversations
 
             var chatGPTConversationClient = new ChatGPTConversationClient(chatGPTClient);
             Console.WriteLine("Now chatting...");
