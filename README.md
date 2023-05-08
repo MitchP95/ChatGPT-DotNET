@@ -6,7 +6,7 @@
 
 The console application uses user secrets from you developement environment:
 
-https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.usersecrets?view=dotnet-plat-ext-8.0
+https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.usersecretsconfigurationextensions?view=dotnet-plat-ext-6.0
 
 To set the secrets open a terminal/pwsh in the ChatGPT-Console project directory, and use the following command line commands:
 
