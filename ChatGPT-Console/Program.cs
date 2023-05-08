@@ -33,7 +33,7 @@ namespace ChatGPT_API_Example
 
             var chatGPTClient = new ChatGPTClient(openAiOrganization, openAiSecretApiKey);
 
-            string prompt = "Write software requirements at the highest level for Facebook.";
+            string prompt = "What is the captial city of Canada?";
             string queryResponse = await chatGPTClient.Query(prompt);
 
             Console.WriteLine("Response: " + queryResponse);
