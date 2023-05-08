@@ -20,7 +20,7 @@ Secret API Key:
 dotnet user-secrets set "OPEN_AI:SECRET_API_KEY" "your-secret-api-key"
 ```
 
-These commands use the colon : as a separator to define the nested structure. The resulting secrets.json file will be as follows:
+The resulting secrets.json file will be as follows:
 
 ```
 {
