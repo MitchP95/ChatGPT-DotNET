@@ -20,9 +20,8 @@ namespace ChatGPT_API_Example
             Configuration = builder.Build();
 
             var openAISecrets = Configuration.GetSection("OPEN_AI");
-            string openApiOrganization = openAISecrets["OPEN_API_ORGANIZATION"];
-            string openApiSecretApiKey = openAISecrets["OPEN_API_SECRET_API_KEY"];
-
+            string openApiOrganization = openAISecrets["ORGANIZATION"];
+            string openApiSecretApiKey = openAISecrets["SECRET_API_KEY"];
 
             // Your code goes here
 
