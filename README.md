@@ -10,9 +10,12 @@ https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.
 
 To set the secrets open a terminal/pwsh in the ChatGPT-Console project directory, and use the following command line commands:
 
+Organization Key:
 ```
 dotnet user-secrets set "OPEN_AI:ORGANIZATION" "your-organization"
 ```
+
+Secret API Key:
 ```
 dotnet user-secrets set "OPEN_AI:SECRET_API_KEY" "your-secret-api-key"
 ```
