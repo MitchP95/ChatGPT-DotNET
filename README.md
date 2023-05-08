@@ -2,9 +2,13 @@
 
 ## Setup
 
+### .NET 6
+
+https://dotnet.microsoft.com/en-us/download/dotnet/6.0
+
 ### Adding User Secrets
 
-The console application uses user secrets from you developement environment:
+The console application uses user secrets from your developement environment:
 
 https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.configuration.usersecretsconfigurationextensions?view=dotnet-plat-ext-6.0
 
