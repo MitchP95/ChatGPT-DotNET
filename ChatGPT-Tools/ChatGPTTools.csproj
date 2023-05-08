@@ -4,6 +4,13 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PackageId>ChatGptDotNET</PackageId>
+    <Version>0.0.1</Version>
+    <Authors>M. Puersten</Authors>
+    <Company>Public</Company>
+    <Description>A package of .NET libraries for simplified communication with ChatGPT API.</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageOutputPath>./nupkg</PackageOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
