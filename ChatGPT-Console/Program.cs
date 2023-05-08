@@ -1,49 +1,37 @@
 ﻿using System;
+using System.IO;
+using System.Threading.Tasks;
 using ChatGPTTools;
-using Amazon;
-using Amazon.SecretsManager;
-using Amazon.SecretsManager.Model;
+using Microsoft.Extensions.Configuration;
 
 namespace ChatGPT_API_Example
 {
     class Program
     {
-        static async System.Threading.Tasks.Task Main(string[] args)
+        public static IConfiguration Configuration { get; set; }
+
+        static async Task Main(string[] args)
         {
-            string secretName = "";
-            string region = "";
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                .AddUserSecrets<Program>(); // Use the current class or any class in your project
 
-            IAmazonSecretsManager client = new AmazonSecretsManagerClient(RegionEndpoint.GetBySystemName(region));
+            Configuration = builder.Build();
 
-            GetSecretValueRequest request = new GetSecretValueRequest
-            {
-                SecretId = secretName,
-                VersionStage = "AWSCURRENT", // VersionStage defaults to AWSCURRENT if unspecified.
-            };
+            var openAISecrets = Configuration.GetSection("OPEN_AI");
+            string openApiOrganization = openAISecrets["OPEN_API_ORGANIZATION"];
+            string openApiSecretApiKey = openAISecrets["OPEN_API_SECRET_API_KEY"];
 
-            GetSecretValueResponse response;
-
-            try
-            {
-                response = await client.GetSecretValueAsync(request);
-            }
-            catch (Exception e)
-            {
-                // For a list of the exceptions thrown, see
-                // https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
-                throw e;
-            }
-
-            string secret = response.SecretString;
 
             // Your code goes here
 
-            var chatGPTClient = new ChatGPTClient(organizationKey, apiKey);
+            var chatGPTClient = new ChatGPTClient(openApiOrganization, openApiSecretApiKey);
 
             string prompt = "What is the capital of France?";
-            string response = await chatGPTClient.Query(prompt);
+            string queryResponse = await chatGPTClient.Query(prompt);
 
-            Console.WriteLine("Response: " + response);
+            Console.WriteLine("Response: " + queryResponse);
         }
     }
 }
