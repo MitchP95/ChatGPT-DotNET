@@ -8,6 +8,8 @@ Install the library with the following:
 dotnet add package ChatGptDotNET --version 1.0.0
 ```
 
+https://www.nuget.org/packages/ChatGptDotNET/
+
 ## Project Setup
 
 ### .NET 6
